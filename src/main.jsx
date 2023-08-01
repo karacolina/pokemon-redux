@@ -1,4 +1,4 @@
-//import React from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { PokemonApp } from "./pokemonApp.jsx";
@@ -6,7 +6,9 @@ import { Provider } from "react-redux";
 import { store } from "./store/store";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <Provider store={store}>
-    <PokemonApp />
-  </Provider>
+  <React.StrictMode>
+    <Provider store={store}>
+      <PokemonApp />
+    </Provider>
+  </React.StrictMode>
 );
