@@ -1,8 +1,31 @@
-# React + Vite
+# Building a Pokémon app with React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p>
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=react,redux,tailwind,vite" />
+  </a>
+</p>
 
-Currently, two official plugins are available:
+A project built using React + Vite + Redux + Tailwind consumes the Pokemon API https://pokeapi.co/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## How to Install
+1. git clone `https://github.com/karacolina/pokemon-redux.git`
+2. cd pokemon-redux
+3. `yarn install`
+4. `yarn dev`
+5. Go to localhost in your browser
+
+
+## Technology
+
+- Vite + React 18
+- Tailwind
+- scss
+- Axios
+- Redux
+
+## Screenshot
+
+<img width="1420" alt="Captura de Pantalla 2024-01-11 a la(s) 18 01 18" src="https://github.com/karacolina/pokemon-redux/assets/11074794/c51dd4cb-dd3e-46cb-a16f-850cdaf08005">
+
