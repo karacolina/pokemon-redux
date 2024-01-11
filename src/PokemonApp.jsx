@@ -2,45 +2,52 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPokemons } from "./store/slices/thunks";
 
+import { CardContainer } from "./components/Card/CardContainer";
+import { Button } from "./components/Button/Button";
+
 export const PokemonApp = () => {
   const {
     isLoading,
-    page,
+    prevPage,
+    nextPage,
     pokemons = [],
   } = useSelector((state) => state.pokemons);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getPokemons());
   }, []);
 
+  const handlePrevPage = () => {
+    if (prevPage >= 0) {
+      dispatch(getPokemons(prevPage));
+    }
+  };
+
   const handleNextPage = () => {
-    dispatch(getPokemons(page));
+    dispatch(getPokemons(nextPage));
   };
 
   return (
-    <>
-      <h1>Pokemon App</h1>
+    <div className="container">
+      <div className="grid min-h-screen place-content-center">
+        <h1 className="mb-6 text-center text-3xl font-bold text-slate-700">
+          Pokemon App
+        </h1>
 
-      <p>Loading {isLoading ? "cargando..." : "Cargado"}</p>
+        <CardContainer pokemons={pokemons} isLoading={isLoading} />
 
-      <ul style={{ display: "flex", justifyContent: "center", gap: 5 }}>
-        {pokemons
-          ? Object.values(pokemons).map((item) => (
-              <li key={item.id}>
-                <p>
-                  <strong>{item.name}</strong>
-                </p>
-                <img src={item.image} alt={item.name} />
-                <p>ID: {item.id}</p>
-              </li>
-            ))
-          : null}
-      </ul>
+        <div className="flex flex-col items-center sm:flex-row sm:justify-center">
+          <Button onClick={handlePrevPage} disabled={prevPage < 0 || isLoading}>
+            Prev pokemons
+          </Button>
 
-      <button type="button" onClick={handleNextPage}>
-        Next pokemons
-      </button>
-    </>
+          <Button onClick={handleNextPage} disabled={isLoading}>
+            Next pokemons
+          </Button>
+        </div>
+      </div>
+    </div>
   );
 };

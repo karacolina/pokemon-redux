@@ -1,0 +1,45 @@
+
+.card {
+    transition: transform 600ms ease;
+    perspective: 1000px;
+    @apply flex justify-center relative  py-2 cursor-pointer;
+
+    &__inner {
+        @apply relative w-full h-full text-center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+        border-radius: 18px;
+    }
+    &__front, &__back {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        display: flex;
+        flex-direction: column;
+        border-radius: 18px;
+    }
+    &__back {
+        background-color: #edffc9;
+        transform: rotateY(180deg);
+    }
+
+    &__details {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        @apply bg-white;
+        border-radius: 0 0 18px 18px;
+        padding: 10px 0 8px;
+    }
+
+    &:hover  {
+        .card__inner {
+            transform: rotateY(180deg);
+        }
+    }
+}

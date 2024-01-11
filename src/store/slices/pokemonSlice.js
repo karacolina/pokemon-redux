@@ -1,22 +1,24 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 export const pokemonSlice = createSlice({
-    name: 'pokemon',
-    initialState: {
-        page: 0,
-        pokemons: [],
-        isLoading: false
+  name: "pokemon",
+  initialState: {
+    prevPage: 0,
+    nextPage: null,
+    pokemons: [],
+    isLoading: false,
+  },
+  reducers: {
+    isLoading: (state) => {
+      state.isLoading = true;
     },
-    reducers: {
-        isLoading: ( state ) => {
-            state.isLoading = true;
-        },
-        setPokemons: (state, action) => {
-            state.isLoading = false;
-            state.page = action.payload.page;
-            state.pokemons = action.payload.pokemons;
-        },
-    }
+    setPokemons: (state, { payload }) => {
+      state.isLoading = false;
+      state.prevPage = payload.prevPage;
+      state.nextPage = payload.nextPage;
+      state.pokemons = payload.pokemons;
+    },
+  },
 });
 
 // Action creators are generated for each case reducer function
